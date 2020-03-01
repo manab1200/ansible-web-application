@@ -2,19 +2,20 @@
 #
 # This is the web application code. DO NOT MODIFY
 #
-# -------------------------------------------------
+#!/usr/bin/python
 
 from flask import Flask
-from flask.ext.mysql import MySQL
+from flaskext.mysql import MySQL
 app = Flask(__name__)
+
 
 mysql = MySQL()
 
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'db_user'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Passw0rd'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'Db%Passw0rd'
 app.config['MYSQL_DATABASE_DB'] = 'employee_db'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_HOST'] = '192.168.0.10'
 mysql.init_app(app)
 
 conn = mysql.connect()
@@ -41,4 +42,4 @@ def read():
     return ",".join(result)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=5000, threaded=True)
