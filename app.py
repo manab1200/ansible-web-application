@@ -24,7 +24,7 @@ cursor = conn.cursor()
 
 @app.route("/")
 def main():
-    return "Welcome!"
+    return "Welcome! web1"
 
 @app.route('/how are you')
 def hello():
