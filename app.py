@@ -6,6 +6,8 @@
 
 from flask import Flask
 from flaskext.mysql import MySQL
+import os
+
 app = Flask(__name__)
 
 
@@ -24,7 +26,8 @@ cursor = conn.cursor()
 
 @app.route("/")
 def main():
-    return "Welcome! web1"
+    hostname = '%s' % os.uname()[1]
+    return "Welcome!" + " " + hostname
 
 @app.route('/how are you')
 def hello():
